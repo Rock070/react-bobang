@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/Rock070/react-blog.git/static/css/main.7d9ee80d.chunk.css",
-    "main.js": "/Rock070/react-blog.git/static/js/main.a17a5e99.chunk.js",
-    "main.js.map": "/Rock070/react-blog.git/static/js/main.a17a5e99.chunk.js.map",
-    "runtime-main.js": "/Rock070/react-blog.git/static/js/runtime-main.6e6ef451.js",
-    "runtime-main.js.map": "/Rock070/react-blog.git/static/js/runtime-main.6e6ef451.js.map",
-    "static/js/2.7eebf28a.chunk.js": "/Rock070/react-blog.git/static/js/2.7eebf28a.chunk.js",
-    "static/js/2.7eebf28a.chunk.js.map": "/Rock070/react-blog.git/static/js/2.7eebf28a.chunk.js.map",
-    "index.html": "/Rock070/react-blog.git/index.html",
-    "static/css/main.7d9ee80d.chunk.css.map": "/Rock070/react-blog.git/static/css/main.7d9ee80d.chunk.css.map",
-    "static/js/2.7eebf28a.chunk.js.LICENSE.txt": "/Rock070/react-blog.git/static/js/2.7eebf28a.chunk.js.LICENSE.txt"
+    "main.css": "/react-blog/static/css/main.7d9ee80d.chunk.css",
+    "main.js": "/react-blog/static/js/main.a17a5e99.chunk.js",
+    "main.js.map": "/react-blog/static/js/main.a17a5e99.chunk.js.map",
+    "runtime-main.js": "/react-blog/static/js/runtime-main.faf87500.js",
+    "runtime-main.js.map": "/react-blog/static/js/runtime-main.faf87500.js.map",
+    "static/js/2.a16f5157.chunk.js": "/react-blog/static/js/2.a16f5157.chunk.js",
+    "static/js/2.a16f5157.chunk.js.map": "/react-blog/static/js/2.a16f5157.chunk.js.map",
+    "index.html": "/react-blog/index.html",
+    "static/css/main.7d9ee80d.chunk.css.map": "/react-blog/static/css/main.7d9ee80d.chunk.css.map",
+    "static/js/2.a16f5157.chunk.js.LICENSE.txt": "/react-blog/static/js/2.a16f5157.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.6e6ef451.js",
-    "static/js/2.7eebf28a.chunk.js",
+    "static/js/runtime-main.faf87500.js",
+    "static/js/2.a16f5157.chunk.js",
     "static/css/main.7d9ee80d.chunk.css",
     "static/js/main.a17a5e99.chunk.js"
   ]
