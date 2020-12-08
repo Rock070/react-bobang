@@ -15,7 +15,7 @@
     "styled-components": "^5.2.1",
     "web-vitals": "^0.2.4"
   },
-  "homepage": "https://rock070.github.io/react-board-test",
+  "homepage": "https://github.com/Rock070/react-blog.git",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
