@@ -1,19 +1,15 @@
-import React, {
-  useState,
-  memo,
-  useCallback,
-} from "react";
+import React, { useState, memo, useCallback, useRef } from "react";
 import "./App.css";
 
-function FunctionBtn({ player, handleResetPiece, gameResult }) {
+function FunctionBtn({ player, handleResetPiece, gameResult, gameResultEl }) {
   return (
     <div className="top-bar">
       <div className="function-btn">
-        <h2>下一位：{player == "black" ? "黑子" : "白子"}</h2>
-        <div className="step-btn">
+        <h2>下一位：{player === "black" ? "黑子" : "白子"}</h2>
+        {/* <div className="step-btn">
           <span className="btn last-btn">上一步</span>
           <span className="btn next-btn">下一步</span>
-        </div>
+        </div> */}
         <div
           className="btn restart-btn"
           onClick={() => {
@@ -23,7 +19,9 @@ function FunctionBtn({ player, handleResetPiece, gameResult }) {
           重新一局
         </div>
       </div>
-      <h1 className="game-result hidden">Winner is: {gameResult} Player</h1>
+      <h1 ref={gameResultEl} className="hidden game-result">
+        Winner is: {gameResult} Player
+      </h1>
     </div>
   );
 }
@@ -63,11 +61,10 @@ function App() {
   const [piece, setPiece] = useState(Array(19).fill(Array(19).fill("")));
   const [player, setPlayer] = useState("black");
   const [gameResult, setGameResult] = useState("");
+  const gameResultEl = useRef(null);
 
   const handleChangePlayer = useCallback(() => {
-    setPlayer(() => {
-      return player == "black" ? "white" : "black";
-    });
+    setPlayer(player === "black" ? "white" : "black");
   }, [player]);
 
   const updateBoard = useCallback(
@@ -87,20 +84,19 @@ function App() {
     [piece]
   );
   // 判斷勝法 ---------------------------------------------------------------------------
-  
+
   const judge = useCallback(
-    
     (player, piece, x, y) => {
       // 橫線贏法
       let win = 0;
       for (let i = 1; i < 6; i++) {
-        if(x+i > 18) {
+        if (x + i > 18) {
           break;
         }
-        if (piece[y][x + i] == player) {
+        if (piece[y][x + i] === player) {
           win++;
           if (win >= 4) {
-            document.querySelector(".game-result").classList.remove("hidden");
+            gameResultEl.current.classList.remove("hidden");
             setGameResult(player);
             win = 0;
             break;
@@ -110,13 +106,13 @@ function App() {
         }
       }
       for (let i = 1; i < 6; i++) {
-        if(x-i < 0) {
+        if (x - i < 0) {
           break;
         }
-        if (piece[y][x - i] == player) {
+        if (piece[y][x - i] === player) {
           win++;
           if (win >= 4) {
-            document.querySelector(".game-result").classList.remove("hidden");
+            gameResultEl.current.classList.remove("hidden");
             setGameResult(player);
             win = 0;
             break;
@@ -130,13 +126,13 @@ function App() {
       // 豎線贏法
 
       for (let i = 1; i < 6; i++) {
-        if(y+i > 18) {
+        if (y + i > 18) {
           break;
         }
-        if (piece[y + i][x] == player) {
+        if (piece[y + i][x] === player) {
           win++;
           if (win >= 4) {
-            document.querySelector(".game-result").classList.remove("hidden");
+            gameResultEl.current.classList.remove("hidden");
             setGameResult(player);
             win = 0;
             break;
@@ -146,13 +142,13 @@ function App() {
         }
       }
       for (let i = 1; i < 6; i++) {
-        if(y-i < 0) {
+        if (y - i < 0) {
           break;
         }
-        if (piece[y - i][x] == player) {
+        if (piece[y - i][x] === player) {
           win++;
           if (win >= 4) {
-            document.querySelector(".game-result").classList.remove("hidden");
+            gameResultEl.current.classList.remove("hidden");
             setGameResult(player);
             win = 0;
             break;
@@ -166,13 +162,13 @@ function App() {
       // 正斜線贏法
 
       for (let i = 1; i < 6; i++) {
-        if(x + i > 18 || y - i <0) {
+        if (x + i > 18 || y - i < 0) {
           break;
         }
-        if (piece[y - i][x + i] == player) {
+        if (piece[y - i][x + i] === player) {
           win++;
           if (win >= 4) {
-            document.querySelector(".game-result").classList.remove("hidden");
+            gameResultEl.current.classList.remove("hidden");
             setGameResult(player);
             win = 0;
             break;
@@ -182,13 +178,13 @@ function App() {
         }
       }
       for (let i = 1; i < 6; i++) {
-        if(y + i > 18 || x - i < 0) {
+        if (y + i > 18 || x - i < 0) {
           break;
         }
-        if (piece[y + i][x - i] == player) {
+        if (piece[y + i][x - i] === player) {
           win++;
           if (win >= 4) {
-            document.querySelector(".game-result").classList.remove("hidden");
+            gameResultEl.current.classList.remove("hidden");
             setGameResult(player);
             win = 0;
             break;
@@ -201,13 +197,13 @@ function App() {
       // 反斜線贏法
 
       for (let i = 1; i < 6; i++) {
-        if(x - i < 0 || y - i <0) {
+        if (x - i < 0 || y - i < 0) {
           break;
         }
-        if (piece[y - i][x - i] == player) {
+        if (piece[y - i][x - i] === player) {
           win++;
           if (win >= 4) {
-            document.querySelector(".game-result").classList.remove("hidden");
+            gameResultEl.current.classList.remove("hidden");
             setGameResult(player);
             win = 0;
             break;
@@ -217,13 +213,13 @@ function App() {
         }
       }
       for (let i = 1; i < 6; i++) {
-        if(y + i > 18 || x + i > 18) {
+        if (y + i > 18 || x + i > 18) {
           break;
         }
-        if (piece[y + i][x + i] == player) {
+        if (piece[y + i][x + i] === player) {
           win++;
           if (win >= 4) {
-            document.querySelector(".game-result").classList.remove("hidden");
+            gameResultEl.current.classList.remove("hidden");
             setGameResult(player);
             win = 0;
             break;
@@ -236,12 +232,12 @@ function App() {
     },
     [player, piece]
   );
-  
+
   // -----------------------------------------------------------------------------------
 
   const handleResetPiece = useCallback(() => {
     setPiece(Array(19).fill(Array(19).fill("")));
-    document.querySelector(".game-result").classList.add("hidden");
+    gameResultEl.current.classList.add("hidden");
     setGameResult("");
   }, []);
 
@@ -250,6 +246,7 @@ function App() {
   return (
     <div className="all">
       <FunctionBtn
+        gameResultEl={gameResultEl}
         player={player}
         handleResetPiece={handleResetPiece}
         gameResult={gameResult}
